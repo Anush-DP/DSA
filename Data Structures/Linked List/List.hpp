@@ -1,12 +1,7 @@
+#include "../Utils/node.hpp"
+
 #ifndef LIST_HPP
 #define LIST_HPP
-
-template<typename T>
-struct Node
-{
-    T data;
-    Node *next;
-};
 
 template<typename T>
 class List
