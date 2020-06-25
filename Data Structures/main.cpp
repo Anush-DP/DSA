@@ -10,8 +10,8 @@ bool circularSinglyLinkedList_IO(CircularSinglyLinkedList<T>&);
 
 int main()
 {
-    List<int> list;
-    CircularSinglyLinkedList<int> cll;
+    List<string> list;
+    CircularSinglyLinkedList<string> cll;
     int x;
     cout << "1. Singly linked list\n";
     cout << "2. Circular singly linked list\n";
@@ -32,10 +32,11 @@ int main()
 template<typename T>
 bool list_IO(List<T>& list)
 {
+    int in;
     T x;
     cout << "1. Insert\n2. Erase\n3. Size\n4. Print\n5. Quit\n";
-    cin >> x;
-    switch (x)
+    cin >> in;
+    switch (in)
     {
     case 1:
         cin >> x;
@@ -59,10 +60,11 @@ bool list_IO(List<T>& list)
 template<typename T>
 bool circularSinglyLinkedList_IO(CircularSinglyLinkedList<T>& cll)
 {
+    int in;
     T x;
     cout << "1. Push back\n2. Push front\n3. Erase\n4. Size\n5. Print\n6. Quit\n";
-    cin >> x;
-    switch (x)
+    cin >> in;
+    switch (in)
     {
     case 1:
         cin >> x;
