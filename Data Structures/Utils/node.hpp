@@ -2,10 +2,10 @@
 #define NODE_HPP
 
 template<typename T>
-struct Node
+struct node
 {
     T data;
-    Node *next;
+    node *next;
 };
 
 #endif

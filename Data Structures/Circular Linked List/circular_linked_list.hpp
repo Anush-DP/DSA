@@ -4,13 +4,13 @@
 #define CLIST_HPP
 
 template<typename T>
-class CircularSinglyLinkedList
+class circular_linked_list
 {
-    Node<T> *tail = nullptr;
+    node<T> *tail = nullptr;
 
     public:
-        CircularSinglyLinkedList(): tail(nullptr){}
-        ~CircularSinglyLinkedList();
+        circular_linked_list(): tail(nullptr){}
+        ~circular_linked_list();
         void push_back(T);
         void push_front(T);
         void erase(T);
@@ -19,7 +19,7 @@ class CircularSinglyLinkedList
 };
 
 template<typename T>
-CircularSinglyLinkedList<T>::~CircularSinglyLinkedList()
+circular_linked_list<T>::~circular_linked_list()
 {
     if(tail == nullptr) return;
     auto head = tail->next;
@@ -34,7 +34,7 @@ CircularSinglyLinkedList<T>::~CircularSinglyLinkedList()
 }
 
 template<typename T>
-void CircularSinglyLinkedList<T>::push_back(T data)
+void circular_linked_list<T>::push_back(T data)
 {
     if(tail == nullptr)
     {
@@ -51,7 +51,7 @@ void CircularSinglyLinkedList<T>::push_back(T data)
 }
 
 template<typename T>
-void CircularSinglyLinkedList<T>::push_front(T data)
+void circular_linked_list<T>::push_front(T data)
 {
     if(tail == nullptr)
     {
@@ -67,7 +67,7 @@ void CircularSinglyLinkedList<T>::push_front(T data)
 }
 
 template<typename T>
-void CircularSinglyLinkedList<T>::erase(T data)
+void circular_linked_list<T>::erase(T data)
 {
     if(tail == nullptr) return;
     auto head = tail->next;
@@ -98,7 +98,7 @@ void CircularSinglyLinkedList<T>::erase(T data)
 }
 
 template<typename T>
-int CircularSinglyLinkedList<T>::size()
+int circular_linked_list<T>::size()
 {
     int size = 0;
     if(tail == nullptr) return size;
@@ -112,7 +112,7 @@ int CircularSinglyLinkedList<T>::size()
 }
 
 template<typename T>
-void CircularSinglyLinkedList<T>::print()
+void circular_linked_list<T>::print()
 {
     auto curr = tail;
     do

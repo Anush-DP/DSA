@@ -1,17 +1,17 @@
 #include <iostream>
-#include "./Linked List/List.hpp"
-#include "Circular Linked List/CList.hpp"
+#include "./Linked List/singly_linked_list.hpp"
+#include "Circular Linked List/circular_linked_list.hpp"
 using namespace std;
 
 template<typename T>
-bool list_IO(List<T>&);
+bool singly_linked_list_IO(singly_linked_list<T>&);
 template<typename T>
-bool circularSinglyLinkedList_IO(CircularSinglyLinkedList<T>&);
+bool circular_linked_list_IO(circular_linked_list<T>&);
 
 int main()
 {
-    List<string> list;
-    CircularSinglyLinkedList<string> cll;
+    singly_linked_list<string> list;
+    circular_linked_list<string> cll;
     int x;
     cout << "1. Singly linked list\n";
     cout << "2. Circular singly linked list\n";
@@ -19,10 +19,10 @@ int main()
     switch (x)
     {
     case 1:
-        while(list_IO(list));
+        while(singly_linked_list_IO(list));
         break;
     case 2:
-        while(circularSinglyLinkedList_IO(cll));
+        while(circular_linked_list_IO(cll));
     default:
         break;
     }
@@ -30,7 +30,7 @@ int main()
 }
 
 template<typename T>
-bool list_IO(List<T>& list)
+bool singly_linked_list_IO(singly_linked_list<T>& list)
 {
     int in;
     T x;
@@ -58,7 +58,7 @@ bool list_IO(List<T>& list)
 }
 
 template<typename T>
-bool circularSinglyLinkedList_IO(CircularSinglyLinkedList<T>& cll)
+bool circular_linked_list_IO(circular_linked_list<T>& cll)
 {
     int in;
     T x;

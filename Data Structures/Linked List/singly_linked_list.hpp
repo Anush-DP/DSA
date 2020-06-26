@@ -1,17 +1,17 @@
 #include "../Utils/node.hpp"
 
-#ifndef LIST_HPP
-#define LIST_HPP
+#ifndef SINGLY_LINKED_LIST_HPP
+#define SINGLY_LINKED_LIST_HPP
 
 template<typename T>
-class List
+class singly_linked_list
 {
     private:
-        Node<T> *head = nullptr; 
+        node<T> *head = nullptr; 
     public:
-        List(): head(nullptr){}
-        List(T data);
-        ~List();
+        singly_linked_list(): head(nullptr){}
+        singly_linked_list(T data);
+        ~singly_linked_list();
         void insert(T);
         void erase(T);
         int size();
@@ -20,7 +20,7 @@ class List
 };
 
 template<typename T>
-List<T>::List(T data)
+singly_linked_list<T>::singly_linked_list(T data)
 {
     head = new Node<T>;
     head->data = data;
@@ -28,7 +28,7 @@ List<T>::List(T data)
 }
 
 template<typename T>
-void List<T>::insert(T data)
+void singly_linked_list<T>::insert(T data)
 {
     if(head == nullptr)
     {
@@ -49,7 +49,7 @@ void List<T>::insert(T data)
 }
 
 template<typename T>
-List<T>::~List()
+singly_linked_list<T>::~singly_linked_list()
 {
     if(head == nullptr) return;
     auto next = head->next;
@@ -63,7 +63,7 @@ List<T>::~List()
 }
 
 template<typename T>
-void List<T>::erase(T data)
+void singly_linked_list<T>::erase(T data)
 {
     if(head == nullptr) return;
     auto curr = head;
@@ -90,7 +90,7 @@ void List<T>::erase(T data)
 }
 
 template<typename T>
-int List<T>::size()
+int singly_linked_list<T>::size()
 {
     int size = 0;
     auto curr = head;
@@ -103,7 +103,7 @@ int List<T>::size()
 }
 
 template<typename T>
-void List<T>::reverse()
+void singly_linked_list<T>::reverse()
 {
     auto curr = head;
     decltype(head) prev = nullptr, next = nullptr;
@@ -118,7 +118,7 @@ void List<T>::reverse()
 }
 
 template<typename T>
-void List<T>::print()
+void singly_linked_list<T>::print()
 {
     auto curr = head;
     while(curr != nullptr)
