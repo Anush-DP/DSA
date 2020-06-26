@@ -6,18 +6,17 @@
 template<typename T>
 class stack
 {
-    private:
-        std::vector<T> stack_vector;
-        int stack_top;
-        int stack_size;
-    public:
-        stack(): stack_top(-1), stack_size(0){}
-        ~stack();
-        void push(T data);
-        void pop();
-        T top();
-        int size();
-        bool empty();
+private:
+    std::vector<T> stack_vector;
+    int stack_top;
+public:
+    stack(): stack_top(-1){}
+    ~stack();
+    void push(T data);
+    void pop();
+    T top();
+    int size();
+    bool empty();
 };
 
 template<typename T>
@@ -30,36 +29,34 @@ template<typename T>
 void stack<T>::push(T data)
 {
     stack_vector.push_back(data);
-    ++stack_size;
     ++stack_top;
 }
 
 template<typename T>
 void stack<T>::pop()
 {
-    if(stack_size == 0) return;
+    if(empty()) return;
     stack_vector.pop_back();
-    --stack_size;
     --stack_top;
 }
 
 template<typename T>
 T stack<T>::top()
 {
-    if(stack_size == 0) throw 1;
+    if(empty()) throw 1;
     return stack_vector[stack_top];
 }
 
 template<typename T>
 int stack<T>::size()
 {
-    return stack_size;
+    return stack_top + 1;
 }
 
 template<typename T>
 bool stack<T>::empty()
 {
-    return stack_size == 0;
+    return stack_top == -1;
 }
 
 #endif
