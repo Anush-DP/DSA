@@ -1,20 +1,26 @@
 #include <iostream>
 #include "./Linked List/singly_linked_list.hpp"
 #include "Circular Linked List/circular_linked_list.hpp"
+#include "Stack/stack.hpp"
 using namespace std;
 
 template<typename T>
 bool singly_linked_list_IO(singly_linked_list<T>&);
 template<typename T>
 bool circular_linked_list_IO(circular_linked_list<T>&);
+template<typename T>
+bool stack_IO(stack<T>&);
 
 int main()
 {
-    singly_linked_list<string> list;
-    circular_linked_list<string> cll;
+    singly_linked_list<int> list;
+    circular_linked_list<float> cll;
+    stack<char> s;
     int x;
     cout << "1. Singly linked list\n";
     cout << "2. Circular singly linked list\n";
+    cout << "3. Doubly linked list\n";
+    cout << "4. Stack\n";
     cin >> x;
     switch (x)
     {
@@ -23,6 +29,10 @@ int main()
         break;
     case 2:
         while(circular_linked_list_IO(cll));
+        break;
+    case 4:
+        while(stack_IO(s));
+        break;
     default:
         break;
     }
@@ -83,6 +93,33 @@ bool circular_linked_list_IO(circular_linked_list<T>& cll)
         return true;
     case 5:
         cll.print();
+        return true;
+    default:
+        return false;
+    }
+}
+
+template<typename T>
+bool stack_IO(stack<T>& s)
+{
+    int in;
+    T x;
+    cout << "1. Push\n2. Pop\n3. Top\n4. Size\n5. Quit\n";
+    cin >> in;
+    switch (in)
+    {
+    case 1:
+        cin >> x;
+        s.push(x);
+        return true;
+    case 2:
+        s.pop();
+        return true;
+    case 3:
+        cout << s.top() << endl;
+        return true;
+    case 4:
+        cout << s.size() << endl;
         return true;
     default:
         return false;

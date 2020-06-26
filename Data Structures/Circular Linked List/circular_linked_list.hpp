@@ -38,13 +38,13 @@ void circular_linked_list<T>::push_back(T data)
 {
     if(tail == nullptr)
     {
-        tail = new Node<T>;
+        tail = new node<T>;
         tail->data = data;
         tail->next = tail;
         return;
     }
     auto head = tail->next;
-    tail->next = new Node<T>;
+    tail->next = new node<T>;
     tail = tail->next;
     tail->data = data;
     tail->next = head;
@@ -55,13 +55,13 @@ void circular_linked_list<T>::push_front(T data)
 {
     if(tail == nullptr)
     {
-        tail = new Node<T>;
+        tail = new node<T>;
         tail->data = data;
         tail->next = tail;
         return;
     }
     auto head = tail->next;
-    tail->next = new Node<T>;
+    tail->next = new node<T>;
     tail->next->data = data;
     tail->next->next = head;
 }

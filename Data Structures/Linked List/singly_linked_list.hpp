@@ -22,7 +22,7 @@ class singly_linked_list
 template<typename T>
 singly_linked_list<T>::singly_linked_list(T data)
 {
-    head = new Node<T>;
+    head = new node<T>;
     head->data = data;
     head->next = nullptr;
 }
@@ -32,7 +32,7 @@ void singly_linked_list<T>::insert(T data)
 {
     if(head == nullptr)
     {
-        head = new Node<T>;
+        head = new node<T>;
         head->data = data;
         head->next = nullptr;
         return;
@@ -42,7 +42,7 @@ void singly_linked_list<T>::insert(T data)
     {
         curr = curr->next;
     }
-    decltype(head) temp = new Node<T>;
+    decltype(head) temp = new node<T>;
     temp->next = nullptr;
     temp->data = data;
     curr->next = temp;
