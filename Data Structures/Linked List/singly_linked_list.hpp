@@ -6,30 +6,23 @@
 template<typename T>
 class singly_linked_list
 {
-    private:
-        node<T> *head = nullptr; 
-    public:
-        singly_linked_list(): head(nullptr){}
-        singly_linked_list(T data);
-        ~singly_linked_list();
-        void insert(T);
-        void erase(T);
-        int size();
-        void reverse();
-        void print();
+private:
+    node<T> *head;
+    int list_size;
+public:
+    singly_linked_list(): head(nullptr), list_size(0){}
+    ~singly_linked_list();
+    void insert(T);
+    void erase(T);
+    int size() const;
+    void reverse();
+    void print();
 };
-
-template<typename T>
-singly_linked_list<T>::singly_linked_list(T data)
-{
-    head = new node<T>;
-    head->data = data;
-    head->next = nullptr;
-}
 
 template<typename T>
 void singly_linked_list<T>::insert(T data)
 {
+    list_size++;
     if(head == nullptr)
     {
         head = new node<T>;
@@ -72,6 +65,7 @@ void singly_linked_list<T>::erase(T data)
     {
         head = curr->next;
         delete curr;
+        list_size--;
         return;
     }
     prev = curr;
@@ -82,6 +76,7 @@ void singly_linked_list<T>::erase(T data)
         {
             prev->next = curr->next;
             delete curr;
+            list_size--;
             break;
         }
         prev = curr;
@@ -90,16 +85,9 @@ void singly_linked_list<T>::erase(T data)
 }
 
 template<typename T>
-int singly_linked_list<T>::size()
+int singly_linked_list<T>::size() const
 {
-    int size = 0;
-    auto curr = head;
-    while(curr != nullptr)
-    {
-        curr = curr->next;
-        size++;
-    }
-    return size;
+    return list_size;
 }
 
 template<typename T>

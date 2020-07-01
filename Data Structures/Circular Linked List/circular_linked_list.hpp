@@ -6,16 +6,17 @@
 template<typename T>
 class circular_linked_list
 {
-    node<T> *tail = nullptr;
-
-    public:
-        circular_linked_list(): tail(nullptr){}
-        ~circular_linked_list();
-        void push_back(T);
-        void push_front(T);
-        void erase(T);
-        int size();
-        void print();
+private:
+    node<T> *tail;
+    int list_size;
+public:
+    circular_linked_list(): tail(nullptr), list_size(0){}
+    ~circular_linked_list();
+    void push_back(T);
+    void push_front(T);
+    void erase(T);
+    int size() const;
+    void print();
 };
 
 template<typename T>
@@ -36,6 +37,7 @@ circular_linked_list<T>::~circular_linked_list()
 template<typename T>
 void circular_linked_list<T>::push_back(T data)
 {
+    list_size++;
     if(tail == nullptr)
     {
         tail = new node<T>;
@@ -53,6 +55,7 @@ void circular_linked_list<T>::push_back(T data)
 template<typename T>
 void circular_linked_list<T>::push_front(T data)
 {
+    list_size++;
     if(tail == nullptr)
     {
         tail = new node<T>;
@@ -77,10 +80,12 @@ void circular_linked_list<T>::erase(T data)
         {
             delete tail;
             tail = nullptr;
+            list_size--;
             return;
         }
         tail->next = head->next;
         delete head;
+        list_size--;
         return;
     }
     auto prev = head;
@@ -91,6 +96,7 @@ void circular_linked_list<T>::erase(T data)
         {
             prev->next = head->next;
             delete head;
+            list_size--;
             return;
         }
         prev = head;
@@ -98,17 +104,9 @@ void circular_linked_list<T>::erase(T data)
 }
 
 template<typename T>
-int circular_linked_list<T>::size()
+int circular_linked_list<T>::size() const
 {
-    int size = 0;
-    if(tail == nullptr) return size;
-    auto head = tail;
-    do
-    {
-        size++;
-        head = head->next;
-    } while (head != tail);
-    return size;
+    return list_size;
 }
 
 template<typename T>
